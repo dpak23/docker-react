@@ -1,0 +1,16 @@
+#This file is used by travis CI to run the tests on code change in the repository.
+# sudo tells it that this process needs super user access
+# services tells this process needs docker to be running on the machines
+# before_install tells what needs to happen before the test is run. In this case docker image needs to be created.
+# script tells the command that needs to run. The way travis works it that after it runs the script and expects the script to exit
+# in npm run test case, this commands waits for input after it finishes running the test. So we added -- -- coverage for it to return the code coverage
+sudo : required
+services:
+  - docker
+
+before_install:
+  - docker build -t deepaktyagi/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run deepaktyagi/docker-react npm run test -- --coverage
+
