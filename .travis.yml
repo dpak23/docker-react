@@ -1,4 +1,4 @@
-#This file is used by travis CI to run the tests on code change in the repository.
+# This file is used by travis CI to run the tests on code change in the repository.
 # sudo tells it that this process needs super user access
 # services tells this process needs docker to be running on the machines
 # before_install tells what needs to happen before the test is run. In this case docker image needs to be created.
@@ -11,7 +11,7 @@ services:
 before_install:
  - docker build -t deepaktyagi/docker-react -f Dockerfile.dev .
 
-#script:
+# script:
 #  - docker run deepaktyagi/docker-react npm run test -- --coverage
 
 deploy:
@@ -22,10 +22,10 @@ deploy:
  bucket_name: "elasticbeanstalk-us-east-1-876507037317"
  bucket_path: "docker-react"
  on:
-   branch: master
-   access_key_id: $AWS_ACCESS_KEY
-   secret_access_key:
-    secure: "$AWS_SECRET_KEY"
+  branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+   secure: "$AWS_SECRET_KEY"
 
 
 
