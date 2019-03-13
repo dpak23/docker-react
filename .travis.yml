@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t deepaktyagi/docker-react -f Docketfile.dev .
+  - docker build -t deepaktyagi/docker-react -f Dockerfile.dev .
 
 script:
   - docker run deepaktyagi/docker-react npm run test -- --coverage
